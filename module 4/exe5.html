@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<template id="news-template">
+    <div class="card col-8" style="width: 18rem; margin:10px">
+        <div class="card-body">
+            <h5 class="card-title">News title</h5>
+            <p class="card-text">News content.</p>
+        </div>
+    </div>
+</template>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dynamic News</title>
+</head>
+<body>
+    <div id="news-container" class="row"></div>
+
+    <!-- Form to add news items -->
+    <div class="container mt-4">
+        <div class="mb-3">
+            <label for="newsTitle" class="form-label">News Title:</label>
+            <input type="text" class="form-control" id="newsTitle">
+        </div>
+        <div class="mb-3">
+            <label for="newsContent" class="form-label">News Content:</label>
+            <textarea class="form-control" id="newsContent" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addNewsItem()">Submit News</button>
+    </div>
+
+    <script>
+        // Sample news data
+        let news = [
+            { id: 1, title: 'Election Results', content: "Newly elected minister..." },
+            { id: 2, title: 'Sporting Success', content: "World Cup winners..." },
+            { id: 3, title: 'Tornado Warning', content: "Residents should prepare..." }
+        ];
+
+        function addNews(newsItem) {
+            const template = document.getElementById("news-template").content.cloneNode(true);
+            template.querySelector('.card-title').innerText = newsItem.title;
+            template.querySelector('.card-text').innerText = newsItem.content;
+            document.querySelector('#news-container').appendChild(template);
+        }
+
+        function updateNewsContainer() {
+            // Clear existing news elements
+            const newsContainer = document.querySelector('#news-container');
+            newsContainer.innerHTML = '';
+
+            // Populate with the latest news
+            news.forEach(newsItem => addNews(newsItem));
+        }
+
+        // Initial population
+        updateNewsContainer();
+
+        // Update news every 5 seconds
+        setInterval(updateNewsContainer, 5000);
+
+        // Function to add news item from form
+        function addNewsItem() {
+            const title = document.getElementById('newsTitle').value;
+            const content = document.getElementById('newsContent').value;
+
+            if (title && content) {
+                // Generate a unique ID for the new news item
+                const newId = news.length + 1;
+
+                // Create a new news item
+                const newNewsItem = { id: newId, title, content };
+
+                // Add the new news item to the array
+                news.push(newNewsItem);
+
+                // Clear form fields
+                document.getElementById('newsTitle').value = '';
+                document.getElementById('newsContent').value = '';
+
+                // Update the news container immediately
+                addNews(newNewsItem);
+            } else {
+                alert("Please enter both title and content.");
+            }
+        }
+    </script>
+</body>
+</html>

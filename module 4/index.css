@@ -1,0 +1,31 @@
+ul{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: orange;
+}
+li{
+    float: right;
+}
+li a{
+    display: block;
+    color: black;
+    text-align: right;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.Logo{
+    text-align: center;
+   
+}
+.banner{
+    justify-content: center;
+    text-align: center;
+    display: block;
+    
+
+}
+img{
+    justify-content: center;
+    float: center;
+}

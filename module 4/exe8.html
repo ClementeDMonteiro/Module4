@@ -1,0 +1,123 @@
+<!--DISPLAY NUMBER OF YEARS,MONTHS AND DAYS-->
+<html>
+<head>
+  <title>Moment DateTime Format</title>
+  <!-- reference Moment.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+<body>
+  <h2>Moment Date</h2>
+  <!-- container for Moment.js output -->
+  <div id="displayMoment"></div>
+
+  <h2>JavaScript Date</h2>
+  <!-- container for JavaScript Date output -->
+  <div id="displayJsDate"></div>
+
+  <h2>Time Since Birth</h2>
+  <!-- container for time since birth output -->
+  <div id="timeSinceBirth"></div>
+
+  <script type="text/javascript">
+    (function() {
+      // Your birthdate in "YYYY-MM-DD" format
+      let birthdate = "1996-11-12"; // Replace with your actual birthdate
+
+      // instantiate a moment object for birthdate
+      let birthMoment = moment(birthdate, "YYYY-MM-DD");
+
+      // instantiate a moment object for the current date
+      let nowMoment = moment();
+
+      // calculate the difference in years, months, and days
+      let years = nowMoment.diff(birthMoment, 'years');
+      let months = nowMoment.diff(birthMoment, 'months') % 12;
+      let days = nowMoment.diff(birthMoment, 'days') % 30;
+
+      // display value of moment object in #displayMoment div
+      let eDisplayMoment = document.getElementById('displayMoment');
+      eDisplayMoment.innerHTML = nowMoment;
+
+      // display value of Date object in #displayJsDate div
+      let eDisplayDate = document.getElementById('displayJsDate');
+      eDisplayDate.innerHTML = nowMoment.toDate();
+
+      // display the number of years, months, and days since birth
+      let eTimeSinceBirth = document.getElementById('timeSinceBirth');
+      eTimeSinceBirth.innerHTML = years + ' years, ' + months + ' months, and ' + days + ' days';
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+<!--MOMENT DATETIME FORMAT-->
+<html>
+<head>
+  <title>Moment DateTime Format</title>
+  <!-- reference Moment.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+<body>
+  <h2>Date Comparison</h2>
+  <!-- container for date comparison output -->
+  <div id="dateComparison"></div>
+
+  <script type="text/javascript">
+    (function() {
+      // Two dates in "YYYY-MM-DD" format
+      let date1 = "1996-11-12"; // Replace with your actual date
+      let date2 = "1998-04-14"; // Replace with your actual date
+
+      // instantiate moment objects for the given dates
+      let momentDate1 = moment(date1, "YYYY-MM-DD");
+      let momentDate2 = moment(date2, "YYYY-MM-DD");
+
+      // compare the dates
+      let isBefore = momentDate1.isBefore(momentDate2);
+      let isAfter = momentDate1.isAfter(momentDate2);
+
+      // display the result
+      let eDateComparison = document.getElementById('dateComparison');
+      if (isBefore) {
+        eDateComparison.innerHTML = "The first date is before the second date.";
+      } else if (isAfter) {
+        eDateComparison.innerHTML = "The first date is after the second date.";
+      } else {
+        eDateComparison.innerHTML = "The two dates are the same.";
+      }
+    })();
+  </script>
+</body>
+</html>
+
+
+<!-- LONDON TIME-->
+
+<html>
+<head>
+  <title>Moment DateTime Format</title>
+  <!-- reference Moment.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- reference Moment Timezone library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js"></script>
+</head>
+<body>
+  <h2>Current Time in London</h2>
+  <!-- container for the current time in London output -->
+  <div id="currentTimeLondon"></div>
+
+  <script type="text/javascript">
+    (function() {
+      // Get the current time in London
+      let londonTime = moment().tz("Europe/London").format("YYYY-MM-DD HH:mm:ss");
+
+      // Display the current time in London
+      let eCurrentTimeLondon = document.getElementById('currentTimeLondon');
+      eCurrentTimeLondon.innerHTML = "Current time in London: " + londonTime;
+    })();
+  </script>
+</body>
+</html>

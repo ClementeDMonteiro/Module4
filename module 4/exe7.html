@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Animation</title>
+    <style>
+        body { 
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100hv;
+            background-color: #f0f0f0;
+         }
+         
+         #square{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: slideAndChange 2s ease-in-out infinite;
+         }
+
+         @keyframes slideAndChange {
+            0%, 100% {
+                transform: translateY(0);
+                background-color: red;
+            }
+            50% {
+                transform: translateY(calc(100vh - 100px));
+                background-color: blue;
+            }
+            
+         }
+
+    </style>
+</head>
+<body>
+    <div id="square"></div>
+</body>
+</html>

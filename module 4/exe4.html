@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e3f2fd;
+            padding: 20px;
+        }
+
+        .card {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+    </style>
+    <title>Responsive Bootstrap Cards</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+    
+
+            <!-- Portfolio Cards -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <img class="card-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image" alt="Portrait">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <img class="card-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image" alt="Portrait">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <img class="card-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image" alt="Portrait">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <img class="card-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image" alt="Portrait">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sky</h5>
+                        <img class="card-image" src="https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" alt="Sky">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sky</h5>
+                        <img class="card-image" src="https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" alt="Sky">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sky</h5>
+                        <img class="card-image" src="https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" alt="Sky">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sky</h5>
+                        <img class="card-image" src="https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" alt="Sky">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more portfolio cards dynamically -->
+            <div id="portfolio-cards"></div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function addPortfolioCard(title, imageUrl) {
+            const template = document
+                .getElementById("portfolio-card-template")
+                .content.cloneNode(true);
+            template.querySelector(".card-title").innerText = title;
+            template.querySelector(".card-image").src = imageUrl;
+            document.querySelector("#portfolio-cards").appendChild(template);
+        }
+
+        const artist = {
+            name: "Van Gogh",
+            portfolio: [
+                {
+                    title: "Portrait",
+                    url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"
+                },
+                {
+                    title: "Sky",
+                    url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg"
+                },
+                // Add more portfolio items dynamically
+                {
+                    title: "Sunset",
+                    url: "https://example.com/sunset-image.jpg"
+                },
+                {
+                    title: "Landscape",
+                    url: "https://example.com/landscape-image.jpg"
+                },
+                // Add more items as needed
+            ],
+        };
+
+        // Add artist profile card
+        addArtistCard(artist.name);
+
+        // Add portfolio cards dynamically
+        artist.portfolio.forEach(item => {
+            addPortfolioCard(item.title, item.url);
+        });
+    </script>
+</body>
+</html>
